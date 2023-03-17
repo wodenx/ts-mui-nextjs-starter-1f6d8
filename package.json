@@ -11,7 +11,8 @@
         "build": "next build",
         "start": "next start",
         "export": "next export",
-        "prettier": "prettier --write src"
+        "prettier": "prettier --write src",
+        "stackbit": "npx @stackbit/cli@0.2.82-gitcms.13 dev"
     },
     "dependencies": {
         "@emotion/cache": "^11.7.1",
