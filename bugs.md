@@ -9,10 +9,12 @@ Notes:
    - STR
      1. Delete all page content from `/content/pages`
      2. Try to create a page from SB UI
-     3. Enter / as the slug
+     3. Enter / as the slug (can't leave blank bc form does not validate)
    - ER: Page is created normally at `index.md`
    - AR: Page is not created with message "Encountered an error when trying to create a new Page"
-
+   - Notes: If this is intended, then it is required that a developer create the first page entry
+     in `/content/pages` - is that the intention?  Perhaps it would be better if this was created
+     automatically using the default values.
 2. Cannot move page
    - STR
      1. Restore page content
@@ -21,3 +23,24 @@ Notes:
    - AR: No way to move page.
    - Notes: I see the `slug` field is commented out in the page model.  Is there another mechanism by
      which an editor can move a page?
+
+3. Home page appears as '/slug' in nav when using directory based filePath
+   - STR:
+     - set filePath for Page as `'content/pages/{slug}/index.md`
+     - rearrange existing data to match this pattern
+       - /about.md -> /about/index.md
+   - ER: Homepage shows in nav dropdown at path `/`
+   - AR: Homepage shows in nav dropdown at path `/slug` - navigating there produces 404. No way
+     to navigate to home page.
+     ![bug3.png](./bug3.png)
+
+4. Constant fields are editable
+   - STR
+     - Add a new const field to page model:
+       ```
+        { type: 'string', name: 'const-field', label: 'Const Field', const: 'This is the value' },
+        ```
+      - Create a new page
+  - ER: The field is not editable
+  - AR: The field is editable.
+  - Note: Also, for existing pages, the field is not populated with the const value.
