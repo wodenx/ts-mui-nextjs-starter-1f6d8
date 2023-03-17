@@ -11,6 +11,7 @@ export const Page: Model =  {
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     fields: [
         // { type: 'slug', name: 'slug', label: 'slug', required: true },
+        { type: 'string', name: 'const-field', label: 'Const Field', const: 'This is the value' },
         { type: 'string', name: 'title', label: 'Title', default: 'This Is a New Page', required: true },
         { type: 'reference', name: 'author', models: ['Author'] },
         {
