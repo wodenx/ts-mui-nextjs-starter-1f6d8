@@ -6,7 +6,7 @@ export const Page: Model =  {
     label: 'Page',
     folder: 'pages',
     urlPath: '/{slug}',
-    filePath: 'content/pages/{slug}.md',
+    filePath: 'content/pages/{slug}/index.md',
     hideContent: true,
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     fields: [
