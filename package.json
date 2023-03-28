@@ -30,9 +30,9 @@
     },
     "devDependencies": {
         "@stackbit/artisanal-names": "^1.0.1",
-        "@stackbit/cli": "0.3.0",
-        "@stackbit/cms-core": "0.2.0",
-        "@stackbit/cms-git": "0.1.0",
+        "@stackbit/cli": "0.3.1",
+        "@stackbit/cms-core": "0.2.1",
+        "@stackbit/cms-git": "0.1.1",
         "@stackbit/types": "0.3.0",
         "@types/fs-extra": "^11.0.1",
         "@types/glob": "^8.0.1",
