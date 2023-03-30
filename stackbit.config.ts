@@ -12,6 +12,7 @@ import { Page } from './.stackbit/models/Page';
 import { ThemeStyle } from './.stackbit/models/ThemeStyle';
 import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
+import { fileToUrl } from 'src/utils/content';
 
 const sbConfig = defineStackbitConfig({
     stackbitVersion: '~0.6.0',
@@ -21,8 +22,6 @@ const sbConfig = defineStackbitConfig({
         new GitContentSource({
             rootPath: __dirname,
             contentDirs: ['content'],
-            repoUrl: process.env.REPO_URL,
-            repoBranch: process.env.REPO_BRANCH,
             models: [Author, Button, Card, CardsSection, Config, Footer, Header, HeroSection, Image, Link, Page, ThemeStyle],
             assetsConfig: {
                 referenceType: 'static',
@@ -31,7 +30,19 @@ const sbConfig = defineStackbitConfig({
                 publicPath: '/'
             }
         })
-    ]
+    ],
+    siteMap: (options) => {
+        const result = options.documents
+            .filter((document) => document.modelName === 'Page')
+            .map((document) => {
+                const slugField = document.fields['slug'];
+                return {
+                    document,
+                    urlPath: fileToUrl(document.id, slugField?.type === 'string' && slugField?.localized == false ? slugField.value : '') || ''
+                };
+            });
+        return result;
+    }
 });
 
 export default sbConfig;

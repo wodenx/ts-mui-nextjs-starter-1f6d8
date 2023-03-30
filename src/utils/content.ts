@@ -21,6 +21,7 @@ function readContent(file: string): types.Document {
     let content = null;
     switch (path.extname(file).substring(1)) {
         case 'md':
+            // eslint-disable-next-line no-case-declarations
             const parsedMd = frontmatter<Record<string, any>>(rawContent);
             content = {
                 ...parsedMd.attributes,
@@ -34,14 +35,18 @@ function readContent(file: string): types.Document {
             throw Error(`Unhandled file type: ${file}`);
     }
     content.__id = file;
-    content.__url = fileToUrl(file);
+    content.__url = fileToUrl(file, content?.slug);
     return content;
 }
 
-function fileToUrl(file: string) {
-    if (!file.startsWith(consts.pagesDir)) return null;
-
-    let url = file.slice(consts.pagesDir.length);
+export function fileToUrl(file: string, contentSlug?: string) {
+    if (!file.startsWith(consts.pagesDir)) {
+        return null;
+    }
+    let url = contentSlug || file.slice(consts.pagesDir.length);
+    if (!url.startsWith('/')) {
+        url = '/' + url;
+    }
     url = url.split('.')[0];
     if (url.endsWith('/index')) {
         url = url.slice(0, -6) || '/';
@@ -51,7 +56,7 @@ function fileToUrl(file: string) {
 
 function urlToFilePairs() {
     const pageFiles = contentFilesInPath(consts.pagesDir);
-    return pageFiles.map((file) => [fileToUrl(file), file]);
+    return pageFiles.map((file) => [fileToUrl(file, readContent(file)?.slug), file]);
 }
 
 export function urlToContent(url: string) {
@@ -65,7 +70,9 @@ export function pagesByType(contentType: types.DocumentTypeNames) {
     for (const [url, file] of urlToFilePairs()) {
         if (file) {
             const content = readContent(file);
-            if (url && content.type === contentType) result[url] = content;
+            if (url && content.type === contentType) { 
+                result[url] = content;
+            }
         }
     }
     return result;
