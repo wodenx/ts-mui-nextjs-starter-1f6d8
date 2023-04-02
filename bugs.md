@@ -5,7 +5,7 @@ Notes:
   updates since then, but unable to try with latest package versions since it' sunclear
   which version of @stackbit/cli to use.
 
-1. Cannot create home page
+1. ** FIXED ** Cannot create home page 
    - STR
      1. Delete all page content from `/content/pages`
      2. Try to create a page from SB UI
@@ -24,7 +24,7 @@ Notes:
    - Notes: I see the `slug` field is commented out in the page model.  Is there another mechanism by
      which an editor can move a page?
 
-3. Home page appears as '/slug' in nav when using directory based filePath
+3. ** FIXED ** Home page appears as '/slug' in nav when using directory based filePath
    - STR:
      - set filePath for Page as `'content/pages/{slug}/index.md`
      - rearrange existing data to match this pattern
@@ -44,3 +44,15 @@ Notes:
   - ER: The field is not editable
   - AR: The field is editable.
   - Note: Also, for existing pages, the field is not populated with the const value.
+
+5. Cannot create new data items
+  - STR
+      - Remove `content/data/amazing-spruce.json`
+      - Run stackbit dev
+      - Click on "Content" in sidebar
+  - ER: You are able to add an entry of type "Author"
+  - AR: You cannot add an entry of type "Author"
+  - NOtes:
+    - You can add a new author only if one already exists
+    - Important to have this work also for "singleInstance" type data, to allow
+      creation of (eg) site header, footer, etc.
