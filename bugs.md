@@ -56,3 +56,18 @@ Notes:
     - You can add a new author only if one already exists
     - Important to have this work also for "singleInstance" type data, to allow
       creation of (eg) site header, footer, etc.
+
+6. Cannot provide default data for model field
+  - STR:
+    - Remove "footer" data from "config.json"
+    - Add default footer data to config model (`Config.ts`)
+  - ER
+    - Default footer data shows up in site config editor in content tab of sitebar
+    - Footer shows "Add footer configuration" with no default data.
+  - Notes:
+    - This *does* seem to work when creating a new item (see the defualt-data
+      page). So this may ultimately be related to #5, and the problem is really
+      that default field values are only used when a new item is created. This
+      means that if I add a new field to model, there is no way to provide a
+      default value for it that will apply to existing data.  This is problematic
+      if I want to roll out such a change to a large number of sites.

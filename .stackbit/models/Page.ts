@@ -10,6 +10,24 @@ export const Page: Model =  {
     hideContent: true,
     thumbnail: 'https://assets.stackbit.com/components/models/thumbnails/default.png',
     fields: [
+        {
+            type: 'model',
+            name: 'footer',
+            label: 'Footer configuration',
+            models: ['Footer'],
+            default: {
+              $$type: 'Footer',
+              copyrightText: 'Powered by Stackbit.',
+              navLinks: [
+                {
+                  type: 'Link',
+                  label: 'Home',
+                  underline: 'hover',
+                  url: '/',
+                },
+              ],
+            },
+        },
         // { type: 'slug', name: 'slug', label: 'slug', required: true },
         { type: 'string', name: 'const-field', label: 'Const Field', const: 'This is the value' },
         { type: 'string', name: 'title', label: 'Title', default: 'This Is a New Page', required: true },

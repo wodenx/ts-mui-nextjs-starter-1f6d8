@@ -23,28 +23,5 @@
                 "underline": "hover"
             }
         ]
-    },
-    "footer": {
-        "copyrightText": "Powered by Stackbit.",
-        "navLinks": [
-            {
-                "type": "Link",
-                "label": "Home",
-                "underline": "hover",
-                "url": "/"
-            },
-            {
-                "type": "Link",
-                "label": "About",
-                "underline": "hover",
-                "url": "/about"
-            },
-            {
-                "type": "Link",
-                "label": "Documentation",
-                "underline": "hover",
-                "url": "https://docs.stackbit.com/"
-            }
-        ]
     }
 }
