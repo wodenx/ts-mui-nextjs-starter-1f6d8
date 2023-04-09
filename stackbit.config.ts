@@ -9,6 +9,7 @@ import { HeroSection } from './.stackbit/models/HeroSection';
 import { Image } from './.stackbit/models/Image';
 import { Link } from './.stackbit/models/Link';
 import { Page } from './.stackbit/models/Page';
+import { ProductPage } from './.stackbit/models/ProductPage';
 import { ThemeStyle } from './.stackbit/models/ThemeStyle';
 import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
@@ -22,7 +23,7 @@ const sbConfig = defineStackbitConfig({
         new GitContentSource({
             rootPath: __dirname,
             contentDirs: ['content'],
-            models: [Author, Button, Card, CardsSection, Config, Footer, Header, HeroSection, Image, Link, Page, ThemeStyle],
+            models: [Author, Button, Card, CardsSection, Config, Footer, Header, HeroSection, Image, Link, Page, ThemeStyle, ProductPage],
             assetsConfig: {
                 referenceType: 'static',
                 staticDir: 'public',
