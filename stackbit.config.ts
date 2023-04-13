@@ -34,7 +34,7 @@ const sbConfig = defineStackbitConfig({
     ],
     siteMap: (options) => {
         const result = options.documents
-            .filter((document) => document.modelName === 'Page')
+            .filter((document) => document.modelName === 'Page' || document.modelName === 'ProductPage')
             .map((document) => {
                 const slugField = document.fields['slug'];
                 return {
