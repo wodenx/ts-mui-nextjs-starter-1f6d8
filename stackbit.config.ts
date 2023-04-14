@@ -14,6 +14,7 @@ import { ThemeStyle } from './.stackbit/models/ThemeStyle';
 import { defineStackbitConfig } from '@stackbit/types';
 import { GitContentSource } from '@stackbit/cms-git';
 import { fileToUrl } from 'src/utils/content';
+// Local code change
 
 const sbConfig = defineStackbitConfig({
     stackbitVersion: '~0.6.0',
